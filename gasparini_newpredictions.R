@@ -61,7 +61,7 @@ colnames(newdata)[colnames(newdata) == c("X1","X2","X3","X4","X5","X6")] <- c("c
 newdata$dolly<-as.factor(ifelse(newdata$dolly==1,"this dolly big and this dolly little","this dolly big"))
 summary(newdata$dolly)
 newdata$circle<-as.factor(ifelse(newdata$circle==1,"Yes","No"))
-# Or, for example: newdata$circle<-as.factor(ifelse(newdata$circle=="Says","Yes","No"))
+### Or, for example: newdata$circle<-as.factor(ifelse(newdata$circle=="Says","Yes","No"))
 summary(newdata$circle)
 newdata$accident<-as.factor(ifelse(newdata$accident==1,"Yes","No"))
 summary(newdata$accident)
@@ -70,6 +70,7 @@ summary(newdata$kangaroo)
 newdata$forget<-as.factor(ifelse(newdata$forget==1,"Yes","No"))
 summary(newdata$forget)
 
+## Check all your columns are in the right format
 summary(newdata)
 
 # Load in SuperLearner predictions generated from ELVS and LSAC data
@@ -97,7 +98,11 @@ newdata <- mutate(newdata, child_id = rownames(newdata))
 newdata<-newdata[c("child_id","predict")]
 
 # Select a cut-off depending on your goal
-## The below shows different goals, the corresponding prediction cut-off and predictive performance
+## The predictions are continuous numbers, where a higher number represents a greater expected likelihood of a child having persisting language disorder or difficulties (LD)
+## To make a binary decision (e.g. lower/higher chance of LD; recruit/don't recruit into this trial), you need to select a cut-off for the predictions
+## Deciding the appropriate cut-off is always a trade-off between misclassifying more children with higher chance of LD (false negatives) or misclassifying more children with lower chance of LD (false positives)
+## The right cut-off depends on your research or recruitment goals
+## The below shows different possible goals, and the corresponding prediction cut-off and predictive performance
 ## Refer to the RMarkdown PDF "elvslsac_prediction_results" for more details
 ## Contact the corresponding author if you would like a new cut-off calculated based on a different goal
 
@@ -111,8 +116,8 @@ newdata<-newdata[c("child_id","predict")]
 # Negative predictive value              0.99 (0.98, 1.00)     0.99 (0.98, 0.99)     0.99 (0.98, 0.99)     0.99 (0.98, 0.99)     0.98 (0.97, 0.98)     0.97 (0.96, 0.98)     0.97 (0.96, 0.97)
 # Correctly classified proportion        0.55 (0.53, 0.58)     0.70 (0.68, 0.72)     0.77 (0.75, 0.79)     0.81 (0.79, 0.82)     0.90 (0.88, 0.91)     0.94 (0.93, 0.95)     0.95 (0.94, 0.96)
 
-## Create a factor(s) dichotomising at the cut-off(s) that corresponds to your goal(s).
-### This provides for each participant a binary prediction of whether they have a lower or higher chance of persisting language disorder or difficulties (LD)
+## Create a factor(s) dichotomising at the cut-off(s) that corresponds to your goal(s)
+### This provides for each participant a binary prediction of whether they have a lower or higher chance of persisting language disorder or difficulties (LD) depending on the cut-off you select
 ### For example, if you are recruiting children into an early language intervention study, you would recruit children classified as "Higher chance of LD"
 newdata$maxsens <- as.factor(ifelse(newdata$predict < 0.015, "Lower chance of LD", "Higher chance of LD"))
 newdata$sens80 <- as.factor(ifelse(newdata$predict < 0.035, "Lower chance of LD", "Higher chance of LD"))
@@ -122,6 +127,7 @@ newdata$spec90 <- as.factor(ifelse(newdata$predict < 0.11, "Lower chance of LD",
 newdata$spec95 <- as.factor(ifelse(newdata$predict < 0.14, "Lower chance of LD", "Higher chance of LD"))
 newdata$maxppv <- as.factor(ifelse(newdata$predict < 0.2, "Lower chance of LD", "Higher chance of LD"))
 
+# Look at how many children are classified as lower or higher chance of LD with each cut-off
 summary(newdata$maxsens)
 summary(newdata$sens80)
 summary(newdata$balancesensspec)
