@@ -1,25 +1,25 @@
 # languagepredictions
-Generating new predictions of language outcome
+## Generating new predictions of language outcome
 
-Creators: Loretta Gasparini, Daisy Shepherd, Melissa Wake, Angela Morgan
+*Creators:* Loretta Gasparini, Daisy Shepherd, Melissa Wake, Angela Morgan
 
-Corresponding author: Loretta Gasparini (gasparini.lorett@gmail.com)
+*Corresponding author:* Loretta Gasparini (gasparini.lorett@gmail.com)
 
-Affiliations: The Murdoch Children's Research Institute & The University of Melbourne
+*Affiliations:* The Murdoch Children's Research Institute & The University of Melbourne
 
 Code originally developed in November 2024
 
-Last updated: November 2024
+*Last updated:* November 2024
 
-Background: Three previous studies (Gasparini et al., 2023; 2024a; 2024b) developed a set of parent-reported predictors that can be asked when children are 2-3 years old that yielded >70% sensitivity and specificity for predicting 11-year language outcomes.
+**Background:** Three previous studies (Gasparini et al., 2023; 2024a; 2024b) developed a set of parent-reported predictors that can be asked when children are 2-3 years old that yielded >70% sensitivity and specificity for predicting 11-year language outcomes.
 
-Purpose: This code allows you to generate predictions about whether 2-3-year-old children are likely to have persisting language difficulties, to aid with recruiting children into research studies.
+**Purpose:** This code allows you to generate predictions about whether 2-3-year-old children are likely to have persisting language difficulties, to aid with recruiting children into research studies.
 
-Exclusions: The prediction tool is intended for research purposes only. It is expected to misclassify a large number of children, so is not suitable to screen for or diagnose language disorder.
+**Exclusions:** The prediction tool is intended for research purposes only. It is expected to misclassify a large number of children, so is not suitable to screen for or diagnose language disorder.
 
-Please cite as:      Gasparini, L., Shepherd, D. A., Wake, M., & Morgan, A. T. (2024). languagepredictions. https://github.com/lottiegasp/languagepredictions
+**Please cite as:**      Gasparini, L., Shepherd, D. A., Wake, M., & Morgan, A. T. (2024). languagepredictions. https://github.com/lottiegasp/languagepredictions
 
-Further background:
+**Further background:**
 
 Gasparini, L., Shepherd, D. A., Lange, K., Wang, J., Verhoef, E., Bavin, E. L., Reilly, S., St. Pourcain, B., Wake, M., & Morgan, A. T. (2024). Combining genetic and behavioral predictors of 11-year language outcome: A multi-cohort study [Preregistration]. Open Science Framework. https://osf.io/mrxdg/ 
 		     
@@ -27,7 +27,7 @@ Gasparini, L., Shepherd, D.A., Wang, J., Wake, M. & Morgan, A.T. (2024) Identify
                      
 Gasparini, L., Shepherd, D. A., Bavin, E. L., Eadie, P., Reilly, S., Morgan, A. T., & Wake, M. (2023). Using machine-learning methods to identify early-life predictors of 11-year language outcome. Journal of Child Psychology & Psychiatry, 64(8), 1242-1252. https://doi.org/10.1111/jcpp.13733 
 
-INSTRUCTIONS:
+### Instructions:
 
 1. Collect the following survey items from parents of children aged 2 or 3 years old. For example, you could collect the items using REDCap.
 
