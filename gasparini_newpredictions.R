@@ -49,7 +49,8 @@ newdata$X5 = rbinom(n=500,size=1,prob=0.92)
 newdata$X6 = rbinom(n=500,size=1,prob=0.73)
 
 # Otherwise, bring in your dataset (rename from "newdata" to your filename and change file type if needed)
-#newdata <- readRDS("newdata.rds")
+## Note that you need complete data for all participants, the prediction model cannot generate predictions for participants with any missing values of the five predictors
+# newdata <- readRDS("newdata.rds")
 
 # Modify your dataset (real or simulated) so it's in the right format
 ## Rename columns
@@ -74,7 +75,9 @@ summary(newdata$forget)
 summary(newdata)
 
 # Load in SuperLearner predictions generated from ELVS and LSAC data
-sl_elvslsac_newpredictions <- readRDS("sl_elvslsac_newpredictions.rds")
+sl_elvslsac_newpredictions <- readRDS("https://github.com/lottiegasp/languagepredictions/blob/main/sl_elvslsac_newpredictions.rds")
+## If that doesn't work, download "sl_elvslsac_newpredictions.rds" from https://github.com/lottiegasp/languagepredictions/blob/main/sl_elvslsac_newpredictions.rds onto your machine and run the following line
+# sl_elvslsac_newpredictions <- readRDS("sl_elvslsac_newpredictions.rds")
 
 # Get dataset into the right format
 ## Reduce dataset to just the 5 predictors and child_id
