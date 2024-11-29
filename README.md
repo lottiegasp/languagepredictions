@@ -11,7 +11,7 @@ Code originally developed in November 2024
 
 *Last updated:* November 2024
 
-**Background:** Three previous studies (Gasparini et al., 2023; 2024a; 2024b) developed a set of parent-reported predictors that can be asked when children are 2-3 years old that yielded >70% sensitivity and specificity for predicting 11-year language outcomes.
+**Background:** Three previous studies (Gasparini et al., 2023; 2024a; 2024b) developed a set of parent-reported predictors that can be asked when children are 2-3 years old that yielded >70% sensitivity and specificity for predicting 11-year language outcomes. A language outcome collected in late childhood allows identification of children with persisting language difficulties, a feature of Language Disorder, rather than children presenting with early language delays, which in many cases resolves without intervention.
 
 **Purpose:** This code allows you to generate predictions about whether 2-3-year-old children are likely to have persisting language difficulties, to aid with recruiting children into research studies.
 
@@ -23,7 +23,7 @@ Code originally developed in November 2024
 
 Gasparini, L., Shepherd, D. A., Lange, K., Wang, J., Verhoef, E., Bavin, E. L., Reilly, S., St. Pourcain, B., Wake, M., & Morgan, A. T. (2024). Combining genetic and behavioral predictors of 11-year language outcome: A multi-cohort study [Preregistration]. Open Science Framework. https://osf.io/mrxdg/ 
 		     
-Gasparini, L., Shepherd, D.A., Wang, J., Wake, M. & Morgan, A.T. (2024) Identifying early language predictors: A replication of Gasparini et al. (2023) confirming applicability in a general population cohort. International Journal of Language & Communication Disorders, 1–15. https://doi.org/10.1111/1460-6984.13086
+Gasparini, L., Shepherd, D.A., Wang, J., Wake, M. & Morgan, A.T. (2024) Identifying early language predictors: A replication of Gasparini et al. (2023) confirming applicability in a general population cohort. International Journal of Language & Communication Disorders, 59, 2352–2366. https://doi.org/10.1111/1460-6984.13086
                      
 Gasparini, L., Shepherd, D. A., Bavin, E. L., Eadie, P., Reilly, S., Morgan, A. T., & Wake, M. (2023). Using machine-learning methods to identify early-life predictors of 11-year language outcome. Journal of Child Psychology & Psychiatry, 64(8), 1242-1252. https://doi.org/10.1111/jcpp.13733 
 
