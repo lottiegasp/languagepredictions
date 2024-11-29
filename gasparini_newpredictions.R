@@ -8,7 +8,7 @@
 ## Code originally developed in November 2024
 ## Last updated: November 2024
 ##
-## Background: Three previous studies (Gasparini et al., 2023; 2024a; 2024b) developed a set of parent-reported predictors that can be asked when children are 2-3 years old that yielded >70% sensitivity and specificity for predicting 11-year language outcomes
+## Background: Three previous studies (Gasparini et al., 2023; 2024a; 2024b) developed a set of parent-reported predictors that can be asked when children are 2-3 years old that yielded >70% sensitivity and specificity for predicting 11-year language outcomes. A language outcome collected in late childhood allows identification of children with persisting language difficulties, a feature of Language Disorder, rather than children presenting with early language delays, which in many cases resolves without intervention.
 ## Purpose: This code allows you to generate predictions about whether 2-3-year-old children are likely to have persisting language difficulties, to aid with recruiting children into research studies
 ## Exclusions: The predictor set is expected to misclassify a large number of children, so is not suitable to screen for or diagnose language disorder
 ##
@@ -115,9 +115,18 @@ newdata<-newdata[c("child_id","predict")]
 
 # Sensitivity                            0.88 (0.78, 0.94)     0.82 (0.71, 0.90)     0.74 (0.62, 0.84)     0.71 (0.59, 0.81)     0.48 (0.36, 0.60)     0.16 (0.09, 0.27)     0.11 (0.05, 0.20)
 # Specificity                            0.54 (0.52, 0.57)     0.70 (0.68, 0.72)     0.78 (0.76, 0.79)     0.81 (0.79, 0.83)     0.91 (0.90, 0.93)     0.97 (0.96, 0.98)     0.98 (0.98, 0.99)
-# Positive predictive value              0.07 (0.05, 0.09)     0.10 (0.07, 0.12)     0.11 (0.09, 0.15)     0.13 (0.10, 0.16)     0.18 (0.13, 0.24)     0.19 (0.10, 0.30)     0.21 (0.10, 0.37)
-# Negative predictive value              0.99 (0.98, 1.00)     0.99 (0.98, 0.99)     0.99 (0.98, 0.99)     0.99 (0.98, 0.99)     0.98 (0.97, 0.98)     0.97 (0.96, 0.98)     0.97 (0.96, 0.97)
+# Positive predictive value (PPV)        0.07 (0.05, 0.09)     0.10 (0.07, 0.12)     0.11 (0.09, 0.15)     0.13 (0.10, 0.16)     0.18 (0.13, 0.24)     0.19 (0.10, 0.30)     0.21 (0.10, 0.37)
+# Negative predictive value (NPV)        0.99 (0.98, 1.00)     0.99 (0.98, 0.99)     0.99 (0.98, 0.99)     0.99 (0.98, 0.99)     0.98 (0.97, 0.98)     0.97 (0.96, 0.98)     0.97 (0.96, 0.97)
 # Correctly classified proportion        0.55 (0.53, 0.58)     0.70 (0.68, 0.72)     0.77 (0.75, 0.79)     0.81 (0.79, 0.82)     0.90 (0.88, 0.91)     0.94 (0.93, 0.95)     0.95 (0.94, 0.96)
+
+## Notes on interpretation: 
+### We use the "Balance sens/spec" cut-off as an example
+### *Sensitivity* of 0.74 means that for every 100 children with a language disorder who are tested, we expect 74 will correctly be identified as having higher chance of LD, and 26 will incorrectly be identified as having a lower chance of LD
+### *Specificity* of 0.78 means that for every 100 children without a language disorder who are tested, we expect 78 will correctly be identified as having lower chance of LD, and 22 will incorrectly be identified as having a higher chance of LD
+### *PPV* of 0.11 means that for every 100 children whom the tool identifies as having higher chance of LD, we expect 11 will truly have a language disorder, and 89 will truly not have a language disorder
+### *NPV* of 0.99 means that for every 100 children whom the tool identifies as having lower chance of LD, we expect 99 will truly not have a language disorder, and 1 will truly have a language disorder
+### *Correctly classified proportion* of 0.77 means that for every 100 children who are tested, 77 will be correctly classified, and 23 will be be incorrectly classified
+### Note that the prevalance for language disorder is about 7-10%, so for every 1 child in the population with language disorder, about 9-13 do not have language disorder. This is why it is so difficult to yield a high PPV even when sensitivity and specificity are satisfactory, because in the general population, any random child is likelier to not have a language disorder than to have a language disorder
 
 ## Create a factor(s) dichotomising at the cut-off(s) that corresponds to your goal(s)
 ### This provides for each participant a binary prediction of whether they have a lower or higher chance of persisting language disorder or difficulties (LD) depending on the cut-off you select
