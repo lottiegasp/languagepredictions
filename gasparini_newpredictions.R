@@ -6,7 +6,7 @@
 ## Corresponding author: Loretta Gasparini (gasparini.lorett@gmail.com)
 ## Affiliations: The Murdoch Children's Research Institute & The University of Melbourne
 ## Code originally developed in November 2024
-## Last updated: November 2024
+## Last updated: December 2024
 ##
 ## Background: Three previous studies (Gasparini et al., 2023; 2024a; 2024b) developed a set of parent-reported predictors that can be asked when children are 2-3 years old that yielded >70% sensitivity and specificity for predicting 11-year language outcomes. A language outcome collected in late childhood allows identification of children with persisting language difficulties, a feature of Language Disorder, rather than children presenting with early language delays, which in many cases resolves without intervention.
 ## Purpose: This code allows you to generate predictions about whether 2-3-year-old children are likely to have persisting language difficulties, to aid with recruiting children into research studies
