@@ -11,7 +11,7 @@ Code originally developed in November 2024
 
 *Last updated:* November 2024
 
-**Background:** Three previous studies (Gasparini et al., 2023; 2024a; 2024b) developed a set of parent-reported predictors that can be asked when children are 2-3 years old that yielded >70% sensitivity and specificity for predicting 11-year language outcomes. A language outcome collected in late childhood allows identification of children with persisting language difficulties, a feature of Language Disorder, rather than children presenting with early language delays, which in many cases resolves without intervention.
+**Background:** Three previous studies (Gasparini et al., 2023; 2024a; 2024b) developed sets of parent-reported predictors that can be asked when children are 2-3 years old that yielded >70% sensitivity and specificity for predicting 11-year language outcomes. A language outcome collected in late childhood allows identification of children with persisting language difficulties, a feature of Language Disorder, rather than children presenting with early language delays, which in many cases resolves without intervention.
 
 **Purpose:** This code allows you to generate predictions about whether 2-3-year-old children are likely to have persisting language difficulties, to aid with recruiting children into research studies.
 
@@ -48,33 +48,44 @@ Gasparini, L., Shepherd, D. A., Bavin, E. L., Eadie, P., Reilly, S., Morgan, A. 
 				Says
 				Not yet
 
-			4. Kangaroo
+			4. Forget/forgot
 
 				Says
 				Not yet
 
-			5. Forget/forgot
+			5. Either:
+			   Kangaroo*
 
 				Says
 				Not yet
 
-2. Collate all parents' surveys in a data file
+   			   Or:
+			   Today**
+
+   				Says
+   				Not yet
+   			  
+
+*The vocabulary item 'kangaroo' was included in the predictor sets reported in the Gasparini et al. studies.
+**The vocabulary item 'today' was not originally included in the predictor sets reported in the Gasparini et al. studies. We have since provided an option to replace 'kangaroo' with 'today' so the predictor set is more applicable internationally.
+
+3. Collate all parents' surveys in a data file
 
 	To simplify data cleaning, it will be helpful to have your data with the following variable names and format or level names. But if you start with different variable names or level names, you can rename them in the R code in step 3.
 
-		Variable names: 	child_id   dolly     				 circle    accident  kangaroo  forget   
- 		Format or level names: any	   this dolly big                        No   	   No        No        No  
- 		   	   			   this dolly big and this dolly little  Yes       Yes       Yes       Yes
+		Variable names: 	child_id   dolly     				 circle    accident  forget  kangaroo   today   
+ 		Format or level names: any	   this dolly big                        No   	   No        No      No  	No
+ 		   	   			   this dolly big and this dolly little  Yes       Yes       Yes     Yes	Yes
 
 	Note: For survey items 2-5, the level "No" corresponds to the survey response "Not yet", and the level "Yes" corresponds to the survey response "Says".
 		
-3. Open the R file "gasparini_newpredictions.R" in RStudio and follow the instructions therein.
+4. Open the R file "gasparini_newpredictions.R" in RStudio and follow the instructions therein.
 
-4. Refer to the RMarkdown PDF "elvslsac_prediction_results" to see the different prediction cut-offs to suit your goals (e.g. balance sensitivity and specificity, maximise sensitivity etc.)
+5. Refer to the RMarkdown PDF "elvslsac_prediction_results" to see the different prediction cut-offs to suit your goals (e.g. balance sensitivity and specificity, maximise sensitivity etc.)
 	
 	Contact Loretta Gasparini (gasparini.lorett@gmail.com) if you would like a new cut-off calculated based on a different goal.
 
-5. Use the classifications for your research purposes. For example, if you are recruiting children into an early language intervention study, you can recruit children classified as "Higher chance of LD".
+6. Use the classifications for your research purposes. For example, if you are recruiting children into an early language intervention study, you can recruit children classified as "Higher chance of LD".
    
 	Note: The prediction tool is intended for research purposes only. It is expected to misclassify a large number of children, so is not suitable to screen for or diagnose language disorder.
 
