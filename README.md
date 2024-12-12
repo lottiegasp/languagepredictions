@@ -9,7 +9,7 @@
 
 Code originally developed in November 2024
 
-*Last updated:* November 2024
+*Last updated:* December 2024
 
 **Background:** Three previous studies (Gasparini et al., 2023; 2024a; 2024b) developed sets of parent-reported predictors that can be asked when children are 2-3 years old that yielded >70% sensitivity and specificity for predicting 11-year language outcomes. A language outcome collected in late childhood allows identification of children with persisting language difficulties, a feature of Language Disorder, rather than children presenting with early language delays, which in many cases resolves without intervention.
 
@@ -79,7 +79,7 @@ Gasparini, L., Shepherd, D. A., Bavin, E. L., Eadie, P., Reilly, S., Morgan, A. 
 
 	Note: For survey items 2-5, the level "No" corresponds to the survey response "Not yet", and the level "Yes" corresponds to the survey response "Says".
 		
-4. Open the R file "gasparini_newpredictions.R" in RStudio and follow the instructions therein.
+4. Open the R file "gasparini_newpredictions.R" in RStudio and follow the instructions therein. (Note that the SuperLearner object for generating predicting using the predictor set with 'today' will become available in Jan 2025)
 
 5. Refer to the RMarkdown PDF "elvslsac_prediction_results" to see the different prediction cut-offs to suit your goals (e.g. balance sensitivity and specificity, maximise sensitivity etc.)
 	
