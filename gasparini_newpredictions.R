@@ -23,7 +23,7 @@
 
 # Refer to the attached README file for instructions on how to collect the data to run below
 
-# Run the following code the first time to install packages
+# Run the following line the first time to install packages
 # install.packages(c("SuperLearner","glmnet","party","xgboost","earth","tidyverse"))
 
 # Load packages
@@ -33,7 +33,7 @@ library(glmnet)
 library(party)
 library(xgboost)
 library(earth)
-## The following package is for modifying your dataset, running the mutate() function below
+## The following package is for modifying your dataset, running the mutate() function
 library(tidyverse)
 
 # Set your working directory (change from "newpredictions" to whatever your folder path is)
@@ -56,6 +56,8 @@ newdata$X6 = rbinom(n=500,size=1,prob=0.73)
 ## Rename columns
 ### If you brought in your own data, replace "X1","X2","X3","X4","X5","X6" below with your existing column names that correspond to child ID number and the 5 predictors
 colnames(newdata)[colnames(newdata) == c("X1","X2","X3","X4","X5","X6")] <- c("child_id","dolly","circle","accident","kangaroo","forget")
+# Or the following, if using the 'today' predictor set:
+# colnames(newdata)[colnames(newdata) == c("X1","X2","X3","X4","X5","X6")] <- c("child_id","dolly","circle","accident","today","forget")
 ## Rename variable levels
 ### If you brought in your own data, change below from "1" to the existing name of your variables that correspond with the new level names below
 ### E.g. if your variable levels are "Says" and "Not yet", change from "1" to "Says" - see the example 4 lines below and repeat this for all variables 
@@ -68,6 +70,9 @@ newdata$accident<-as.factor(ifelse(newdata$accident==1,"Yes","No"))
 summary(newdata$accident)
 newdata$kangaroo<-as.factor(ifelse(newdata$kangaroo==1,"Yes","No"))
 summary(newdata$kangaroo)
+# Or the following, if using the 'today' predictor set:
+# newdata$today<-as.factor(ifelse(newdata$today==1,"Yes","No"))
+# summary(newdata$today)
 newdata$forget<-as.factor(ifelse(newdata$forget==1,"Yes","No"))
 summary(newdata$forget)
 
@@ -75,13 +80,19 @@ summary(newdata$forget)
 summary(newdata)
 
 # Load in SuperLearner predictions generated from ELVS and LSAC data
-sl_elvslsac_newpredictions <- readRDS("https://github.com/lottiegasp/languagepredictions/blob/main/sl_elvslsac_newpredictions.rds")
-## If that doesn't work, download "sl_elvslsac_newpredictions.rds" from https://github.com/lottiegasp/languagepredictions/blob/main/sl_elvslsac_newpredictions.rds onto your machine and run the following line
-# sl_elvslsac_newpredictions <- readRDS("sl_elvslsac_newpredictions.rds")
+sl_elvslsac_newpredictions <- readRDS("https://github.com/lottiegasp/languagepredictions/blob/main/sl_elvslsac_newpredictions_kangaroo.rds")
+# Or the following, if using the 'today' predictor set:
+# sl_elvslsac_newpredictions <- readRDS("https://github.com/lottiegasp/languagepredictions/blob/main/sl_elvslsac_newpredictions_today.rds")
+## If that doesn't work, download "sl_elvslsac_newpredictions_kangaroo.rds" from https://github.com/lottiegasp/languagepredictions onto your machine and run the following line
+# sl_elvslsac_newpredictions <- readRDS("sl_elvslsac_newpredictions_kangaroo.rds")
+# Or the following, if using the 'today' predictor set:
+# sl_elvslsac_newpredictions <- readRDS("sl_elvslsac_newpredictions_today.rds")
 
 # Get dataset into the right format
 ## Reduce dataset to just the 5 predictors and child_id
 newdata<-newdata[c("child_id","dolly","circle","accident","kangaroo","forget")]
+# Or the following, if using the 'today' predictor set:
+# newdata<-newdata[c("child_id","dolly","circle","accident","today","forget")]
 ## Turn child_id into the row name
 rownames(newdata) <- newdata[,1]
 ## Remove missing data
@@ -105,11 +116,13 @@ newdata<-newdata[c("child_id","predict")]
 ## To make a binary decision (e.g. lower/higher chance of LD; recruit/don't recruit into this trial), you need to select a cut-off for the predictions
 ## Deciding the appropriate cut-off is always a trade-off between misclassifying more children with higher chance of LD (false negatives) or misclassifying more children with lower chance of LD (false positives)
 ## The right cut-off depends on your research or recruitment goals
-## The below shows different possible goals, and the corresponding prediction cut-off and predictive performance
+## The below shows different possible goals, and the corresponding prediction cut-off and predictive performance (with 95% confidence intervals)
 ## Refer to the RMarkdown PDF "elvslsac_prediction_results" for more details
 ## Contact the corresponding author if you would like a new cut-off calculated based on a different goal
 
 # Goal:                                  Maximise sensitivity  >80% sensitivity      Balance sens/spec     >80% specificity      >90% specificity      >95% specificity      Maximise PPV
+
+# Predictor set with 'kangaroo'
 
 # Cut-off:                               0.015                 0.035                 0.0395                0.045                 0.11                  0.14                  0.2           
 
@@ -119,8 +132,19 @@ newdata<-newdata[c("child_id","predict")]
 # Negative predictive value (NPV)        0.99 (0.98, 1.00)     0.99 (0.98, 0.99)     0.99 (0.98, 0.99)     0.99 (0.98, 0.99)     0.98 (0.97, 0.98)     0.97 (0.96, 0.98)     0.97 (0.96, 0.97)
 # Correctly classified proportion        0.55 (0.53, 0.58)     0.70 (0.68, 0.72)     0.77 (0.75, 0.79)     0.81 (0.79, 0.82)     0.90 (0.88, 0.91)     0.94 (0.93, 0.95)     0.95 (0.94, 0.96)
 
+# Predictor set with 'today'
+
+# Cut-off:                               0.012                 0.036                 0.045                 0.049                 0.097                 0.134                 0.2
+
+# Sensitivity                            0.90 (0.81, 0.96)     0.81 (0.70, 0.89)     0.74 (0.62, 0.84)     0.67 (0.55, 0.78)     0.55 (0.43, 0.66)     0.34 (0.24, 0.46)     0.21 (0.12, 0.32)
+# Specificity                            0.54 (0.52, 0.56)     0.71 (0.69, 0.73)     0.79 (0.77, 0.80)     0.83 (0.81, 0.85)     0.90 (0.89, 0.92)     0.95 (0.94, 0.96)     0.98 (0.97, 0.98)
+# Positive predictive value (PPV)        0.07 (0.06, 0.09)     0.10 (0.07, 0.12)     0.12 (0.09, 0.15)     0.13 (0.10, 0.17)     0.18 (0.13, 0.24)     0.21 (0.14, 0.30)     0.26 (0.16, 0.40)
+# Negative predictive value (NPV)        0.99 (0.99, 1.00)     0.99 (0.98, 0.99)     0.99 (0.98, 0.99)     0.98 (0.98, 0.99)     0.98 (0.97, 0.99)     0.97 (0.97, 0.98)     0.97 (0.96, 0.98)
+# Correctly classified proportion        0.55 (0.53, 0.58)     0.71 (0.69, 0.73)     0.78 (0.77, 0.80)     0.82 (0.81, 0.84)     0.89 (0.87, 0.90)     0.93 (0.92, 0.94)     0.95 (0.94, 0.96)
+
+
 ## Notes on interpretation: 
-### We use the "Balance sens/spec" cut-off as an example
+### We use the 'kangaroo' predictor set "Balance sens/spec" cut-off as an example
 ### *Sensitivity* of 0.74 means that for every 100 children with a language disorder who are tested, we expect 74 will correctly be identified as having higher chance of LD, and 26 will incorrectly be identified as having a lower chance of LD
 ### *Specificity* of 0.78 means that for every 100 children without a language disorder who are tested, we expect 78 will correctly be identified as having lower chance of LD, and 22 will incorrectly be identified as having a higher chance of LD
 ### *PPV* of 0.11 means that for every 100 children whom the tool identifies as having higher chance of LD, we expect 11 will truly have a language disorder, and 89 will truly not have a language disorder
@@ -131,12 +155,21 @@ newdata<-newdata[c("child_id","predict")]
 ## Create a factor(s) dichotomising at the cut-off(s) that corresponds to your goal(s)
 ### This provides for each participant a binary prediction of whether they have a lower or higher chance of persisting language disorder or difficulties (LD) depending on the cut-off you select
 ### For example, if you are recruiting children into an early language intervention study, you would recruit children classified as "Higher chance of LD"
+### For the 'kangaroo' predictor set
 newdata$maxsens <- as.factor(ifelse(newdata$predict < 0.015, "Lower chance of LD", "Higher chance of LD"))
 newdata$sens80 <- as.factor(ifelse(newdata$predict < 0.035, "Lower chance of LD", "Higher chance of LD"))
 newdata$balancesensspec <- as.factor(ifelse(newdata$predict < 0.0395, "Lower chance of LD", "Higher chance of LD"))
 newdata$spec80 <- as.factor(ifelse(newdata$predict < 0.045, "Lower chance of LD", "Higher chance of LD"))
 newdata$spec90 <- as.factor(ifelse(newdata$predict < 0.11, "Lower chance of LD", "Higher chance of LD"))
 newdata$spec95 <- as.factor(ifelse(newdata$predict < 0.14, "Lower chance of LD", "Higher chance of LD"))
+newdata$maxppv <- as.factor(ifelse(newdata$predict < 0.2, "Lower chance of LD", "Higher chance of LD"))
+### Or, for the 'today' predictor set
+newdata$maxsens <- as.factor(ifelse(newdata$predict < 0.012, "Lower chance of LD", "Higher chance of LD"))
+newdata$sens80 <- as.factor(ifelse(newdata$predict < 0.036, "Lower chance of LD", "Higher chance of LD"))
+newdata$balancesensspec <- as.factor(ifelse(newdata$predict < 0.045, "Lower chance of LD", "Higher chance of LD"))
+newdata$spec80 <- as.factor(ifelse(newdata$predict < 0.049, "Lower chance of LD", "Higher chance of LD"))
+newdata$spec90 <- as.factor(ifelse(newdata$predict < 0.097, "Lower chance of LD", "Higher chance of LD"))
+newdata$spec95 <- as.factor(ifelse(newdata$predict < 0.134, "Lower chance of LD", "Higher chance of LD"))
 newdata$maxppv <- as.factor(ifelse(newdata$predict < 0.2, "Lower chance of LD", "Higher chance of LD"))
 
 # Look at how many children are classified as lower or higher chance of LD with each cut-off
