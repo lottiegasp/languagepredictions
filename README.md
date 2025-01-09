@@ -31,40 +31,39 @@ Gasparini, L., Shepherd, D. A., Bavin, E. L., Eadie, P., Reilly, S., Morgan, A. 
 
 1. Collect the following survey items from parents of children aged 2 or 3 years old. For example, you could collect the items using REDCap.
 
-		1. Mark the sentence that sounds most like the way your child talks at the moment. If your child is saying sentences even longer or more complicated than the two provided, mark the second one.
+	1. Mark the sentence that sounds most like the way your child talks at the moment. If your child is saying sentences even longer or more complicated than the two provided, mark the second one.
 
 			This dolly big
 			This dolly big and this dolly little
 
-		Children understand many more words than they can say. We are particularly interested in the words your child SAYS. Please mark the words you have heard your child use. If your child uses a different pronunciation of a word mark the word anyway. This is only a sample of words; your child may know many other words not on this list.
+	Children understand many more words than they can say. We are particularly interested in the words your child SAYS. Please mark the words you have heard your child use. If your child uses a different pronunciation of a word mark the word anyway. This is only a sample of words; your child may know many other words not on this list.
 
-			2. Circle
+	2. Circle
 
-				Says
-				Not yet
+			Says
+			Not yet
 
-			3. Accident
+	3. Accident
 
-				Says
-				Not yet
+			Says
+			Not yet
 
-			4. Forget/forgot
+	4. Forget/forgot
 
-				Says
-				Not yet
+			Says
+			Not yet
 
-			5. Either:
-			   Kangaroo*
+	5. Either:
+		Kangaroo*
 
-				Says
-				Not yet
+			Says
+			Not yet
 
-   			   Or:
-			   Today**
+	Or:
+		Today**
 
-   				Says
-   				Not yet
-   			  
+			Says
+			Not yet
 
 *The vocabulary item 'kangaroo' was included in the predictor sets reported in the Gasparini et al. studies.
 **The vocabulary item 'today' was not originally included in the predictor sets reported in the Gasparini et al. studies. We have since provided an option to replace 'kangaroo' with 'today' so the predictor set is more applicable internationally.
@@ -73,9 +72,9 @@ Gasparini, L., Shepherd, D. A., Bavin, E. L., Eadie, P., Reilly, S., Morgan, A. 
 
 	To simplify data cleaning, it will be helpful to have your data with the following variable names and format or level names. But if you start with different variable names or level names, you can rename them in the R code in step 3.
 
-		Variable names: 	child_id   dolly     				 circle    accident  forget  kangaroo   today   
- 		Format or level names: any	   this dolly big                        No   	   No        No      No  	No
- 		   	   			   this dolly big and this dolly little  Yes       Yes       Yes     Yes	Yes
+		Variable names: 		child_id   	dolly     				circle    accident  forget  kangaroo   today   
+		Format or level names: 	any	   	this dolly big                        	No   	  No        No      No  	No
+ 								this dolly big and this dolly little  	Yes       Yes       Yes     Yes		Yes
 
 	Note: For survey items 2-5, the level "No" corresponds to the survey response "Not yet", and the level "Yes" corresponds to the survey response "Says".
 		
