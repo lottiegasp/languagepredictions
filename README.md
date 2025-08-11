@@ -72,9 +72,9 @@ Gasparini, L., Shepherd, D. A., Bavin, E. L., Eadie, P., Reilly, S., Morgan, A. 
 
 	To simplify data cleaning, it will be helpful to have your data with the following variable names and format or level names. But if you start with different variable names or level names, you can rename them in the R code in step 3.
 
-		Variable names: 		child_id   	dolly     								circle    accident  forget  kangaroo   	today   
+		Variable names: 			child_id   	dolly     								circle    accident  forget  kangaroo   	today   
 		Format or level names: 	any	   		this dolly big                        	No   	  No        No      No  		No
- 											this dolly big and this dolly little  	Yes       Yes       Yes     Yes			Yes
+ 												this dolly big and this dolly little  	Yes       Yes       Yes     Yes			Yes
 
 	Note: For survey items 2-5, the level "No" corresponds to the survey response "Not yet", and the level "Yes" corresponds to the survey response "Says".
 		
